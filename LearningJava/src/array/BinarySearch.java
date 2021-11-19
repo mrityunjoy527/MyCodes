@@ -35,7 +35,7 @@ public class BinarySearch {
             if(a[mid] == key){
                 return mid;
             }
-            if(a[low] < a[mid]){
+            if(a[low] <= a[mid]){
                 if(key >= a[low] && key < a[mid]){
                     high = mid - 1;
                 }else{

@@ -2,15 +2,21 @@ package queues;
 
 public class MainQueue {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
-        MyQueue<Integer> mq = new MyQueue<>();
-
-        mq.enQueue(23);
-        mq.enQueue(2);
-        mq.enQueue(56);
-
-
-        System.out.println(mq.peek());
+        MyCirculerQueue q = new MyCirculerQueue(5);
+        q.enqueue(12);
+        q.enqueue(23);
+        q.enqueue(4);
+        System.out.println(q.dequeue());
+        System.out.println(q.dequeue());
+//        System.out.println(q.dequeue());
+//        System.out.println(q.dequeue());
+//        System.out.println(q.dequeue());
+        q.enqueue(5);
+        q.enqueue(43);
+        System.out.println(q.dequeue());
+        System.out.println(q.dequeue());
+        System.out.println(q.dequeue());
     }
 }

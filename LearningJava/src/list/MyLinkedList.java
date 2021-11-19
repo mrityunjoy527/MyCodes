@@ -70,7 +70,7 @@ package list;
         return size;
     }
 
-    static class Node<E> {
+    public static class Node<E> {
         E data;
         Node<E> next;
 

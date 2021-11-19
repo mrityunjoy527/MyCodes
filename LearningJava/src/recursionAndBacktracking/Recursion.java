@@ -25,6 +25,7 @@ public class Recursion {
 
         int a[] = {1, 5, 7, 3, 2, 4};
         System.out.println(coinMax(a, 0, a.length - 1));
+        System.out.println(gcd(48, 36));
     }
     static int power(int a, int b){
         if(b == 0){
@@ -107,5 +108,9 @@ public class Recursion {
             ds.remove(ds.size() - 1);
         }
         combinations(ind + 1, target, arr, ans, ds);
+    }
+    static int gcd(int a, int b){
+        if(b == 0) return a;
+        return gcd(b, a % b);
     }
 }

@@ -2,47 +2,41 @@ package queues;
 
 import java.net.PortUnreachableException;
 
-public class MyQueue<E> {
+public class MyQueue {
 
-    Node<E> head, rear;
+    class Node{
+        int data;
+        Node next;
+        public Node(int data){
+            this.data = data;
+        }
+    }
+    Node front, rear;
 
-    public void enQueue(E data){
-        Node<E> toAdd = new Node<>(data);
-        if(head == null){
-            head = rear = toAdd;
+    private void enqueue(int data){
+        Node newNode = new Node(data);
+        if(front == null){
+            front = rear = newNode;
             return;
         }
-        rear.next = toAdd;
-        rear = rear.next;
+        rear.next = newNode;
+        rear = newNode;
+    }
+    private int dequeue() throws Exception {
+        if(front == null){
+            throw new Exception();
+        }
+        int res = front.data;
+        front = front.next;
+        return res;
     }
 
-    public E deQueue(){
-        if (head == null){
-            return null;
-        }
-        Node<E> temp = head;
-        head = head.next;
-        if (head == null){
-            rear = null;
-        }
-        return temp.data;
-    }
-
-    public E peek(){
-        Node<E> first = head;
-        if(head == null){
-            return null;
-        }
-        return head.data;
-    }
-
-    static class Node<E>{
-        E data;
-        Node<E> next;
-
-        public Node(E data){
-            this.data = data;
-            next = null;
-        }
+    public static void main(String[] args) throws Exception {
+        MyQueue q = new MyQueue();
+        q.enqueue(1);
+        q.enqueue(2);
+        System.out.println(q.dequeue());
+        System.out.println(q.dequeue());
+        System.out.println(q.dequeue());
     }
 }
